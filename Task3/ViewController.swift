@@ -8,42 +8,36 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
     @IBOutlet private weak var textField1: UITextField!
     @IBOutlet private weak var textField2: UITextField!
-    @IBOutlet private weak var switch1: UISwitch!
-    @IBOutlet private weak var switch2: UISwitch!
+    @IBOutlet private weak var mySwitch1: UISwitch!
+    @IBOutlet private weak var mySwitch2: UISwitch!
     @IBOutlet private weak var totalButton: UIButton!
     @IBOutlet private weak var label1: UILabel!
     @IBOutlet private weak var label2: UILabel!
     @IBOutlet private weak var totalLabel: UILabel!
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    @IBAction func switch1Changed(_ sender: UISwitch) {
-        let num1 = Double(textField1.text ?? "" ) ?? 0
-        if sender.isOn {
-            //Onの時、符号を反転させる
-            self.label1.text = String(num1 * -1)
-        } else {
-            //Offの時、符号はそのまま
-            self.label1.text = String(num1)
-        }
-    }
-    @IBAction func switch2Changed(_ sender: UISwitch) {
-        let num2 = Double(textField2.text ?? "" ) ?? 0
-        if sender.isOn {
-            //Onの時、符号を反転させる
-            self.label2.text = String(num2 * -1)
-        } else {
-            //Offの時、符号はそのまま
-            self.label2.text = String(num2)
-        }
-    }
+
     @IBAction func buttonTapped(_ sender: Any) {
-        let fig1 = Double(self.label1.text ?? "" ) ?? 0
-        let fig2 = Double(self.label2.text ?? "" ) ?? 0
-        let total = Double(fig1 + fig2)
-        self.totalLabel.text = String(total)
+        let num1 = Double(textField1.text ?? "" ) ?? 0
+        let num2 = Double(textField2.text ?? "" ) ?? 0
+        if mySwitch1.isOn{
+            let fig1 = num1 * -1
+            label1.text = String(fig1)
+        } else {
+            let fig1 = num1
+            label1.text = String(fig1)
+        }
+        if mySwitch2.isOn{
+            let fig2 = num2 * -1
+            label2.text = String(fig2)
+        } else {
+            let fig2 = num2
+            label2.text = String(fig2)
+        }
+       let result1 = Double(label1.text ?? "" ) ?? 0
+       let result2 = Double(label2.text ?? "" ) ?? 0
+       let total = result1 + result2
+       self.totalLabel.text = String(total)
     }
 }
-
