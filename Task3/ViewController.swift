@@ -21,23 +21,24 @@ class ViewController: UIViewController {
     @IBAction func buttonTapped(_ sender: Any) {
         let num1 = Double(textField1.text ?? "" ) ?? 0
         let num2 = Double(textField2.text ?? "" ) ?? 0
+
+        let signedNum1: Double
         if mySwitch1.isOn{
-            let fig1 = num1 * -1
-            label1.text = String(fig1)
+            signedNum1 = num1 * -1
         } else {
-            let fig1 = num1
-            label1.text = String(fig1)
+            signedNum1 = num1
         }
+        label1.text = String(signedNum1)
+
+        let signedNum2: Double
         if mySwitch2.isOn{
-            let fig2 = num2 * -1
-            label2.text = String(fig2)
+            signedNum2 = num2 * -1
         } else {
-            let fig2 = num2
-            label2.text = String(fig2)
+            signedNum2 = num2
         }
-       let result1 = Double(label1.text ?? "" ) ?? 0
-       let result2 = Double(label2.text ?? "" ) ?? 0
-       let total = result1 + result2
-       self.totalLabel.text = String(total)
+        label2.text = String(signedNum2)
+
+        let total = signedNum1 + signedNum2
+        self.totalLabel.text = String(total)
     }
 }
